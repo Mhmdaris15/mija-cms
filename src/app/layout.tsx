@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./provider";
+import { Progress } from "@nextui-org/react";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Progress size="sm" aria-label="Loading..." value={30} />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);
