@@ -17,6 +17,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { RiFileEditLine } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import { IoAdd } from "react-icons/io5";
+import MenuDialog from "@/components/MenuDialog";
 
 type Props = {};
 
@@ -109,8 +110,8 @@ const MenuListPage = (props: Props) => {
 	}, [page, menuArray]);
 
 	return (
-		<div className="flex flex-col justify-stretch mt-5 mx-10">
-			<section className="flex justify-between items-center gap-x-4">
+		<div className="flex flex-col justify-stretch mt-5 px-10 bg-gray-600 w-full h-full">
+			<section className="flex justify-between items-center gap-x-4 mt-5 p-5 rounded-xl bg-gray-50">
 				<h3 className="flex-initial w-32 text-2xl font-bold">Menu List</h3>
 				<div className="flex justify-stretch items-center gap-x-4 flex-1 px-24">
 					<Input type="email" className="" variant="bordered" />
@@ -120,15 +121,13 @@ const MenuListPage = (props: Props) => {
 						</div>
 					</Button>
 				</div>
-				<Button className="flex-initial w-32 h-12 bg-red-600 text-white">
-					<IoAdd /> Tambahkan
-				</Button>
+				<MenuDialog />
 			</section>
 			<Table
 				color={"primary"}
 				selectionMode="single"
 				defaultSelectedKeys={["2"]}
-				className="mt-10"
+				className="mt-5"
 				classNames={{
 					wrapper: "min-h-[222px]",
 				}}
@@ -153,7 +152,6 @@ const MenuListPage = (props: Props) => {
 					<TableColumn>Harga (Rp)</TableColumn>
 					<TableColumn>Deskripsi</TableColumn>
 					<TableColumn>Stok</TableColumn>
-					<TableColumn>Diskon</TableColumn>
 					<TableColumn className="text-center">Aksi</TableColumn>
 				</TableHeader>
 				<TableBody>
@@ -166,7 +164,6 @@ const MenuListPage = (props: Props) => {
 								<TableCell>{menu.harga}</TableCell>
 								<TableCell className="max-w-lg">{menu.deskripsi}</TableCell>
 								<TableCell>{menu.stok}</TableCell>
-								<TableCell>{menu.diskon}</TableCell>
 								<TableCell>
 									<div className="flex justify-center items-center gap-x-4">
 										<span className="p-1 cursor-pointer hover:text-green-500">

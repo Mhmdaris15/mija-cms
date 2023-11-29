@@ -7,6 +7,7 @@ import {
 	DropdownMenu,
 	DropdownTrigger,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
@@ -14,6 +15,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 type Props = {};
 
 const Banner = (props: Props) => {
+	const router = useRouter();
 	return (
 		<div className="w-full h-32 py-8 px-8 bg-red-50 text-black font-extrabold text-4xl flex items-center justify-between">
 			<span>Panel Admin</span>
@@ -51,7 +53,10 @@ const Banner = (props: Props) => {
 						<DropdownItem key="system">System</DropdownItem>
 						<DropdownItem key="configurations">Configurations</DropdownItem>
 						<DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-						<DropdownItem key="logout" color="danger">
+						<DropdownItem
+							key="logout"
+							color="danger"
+							onClick={() => router.push("/login")}>
 							Log Out
 						</DropdownItem>
 					</DropdownMenu>

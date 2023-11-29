@@ -81,7 +81,12 @@ const Sidebar = (props: Props) => {
 
 	return (
 		<div className="w-[20%] flex flex-col gap-y-5 py-10 pl-10 pr-5 border-r-2 border-black">
-			<Image src={MijaLogo} alt="Mija Logo" />
+			<Image
+				src={MijaLogo}
+				className="cursor-pointer"
+				alt="Mija Logo"
+				onClick={() => router.push("/")}
+			/>
 			<section className="flex flex-col gap-2 mt-10 text-black">
 				<Button
 					onClick={() => onClickButton("dashboard")}

@@ -3,6 +3,7 @@
 import { Button, Input } from "@nextui-org/react";
 import { useFormik } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -10,6 +11,8 @@ type Props = {};
 
 const LoginForm = (props: Props) => {
 	const [isVisible, setIsVisible] = React.useState(false);
+
+	const router = useRouter();
 
 	const toggleVisibility = () => setIsVisible(!isVisible);
 	const formik = useFormik({
@@ -65,7 +68,11 @@ const LoginForm = (props: Props) => {
 				/>
 			</div>
 			<div className="flex flex-col gap-y-2">
-				<Button className="w-full bg-red-700 text-white">Login</Button>
+				<Button
+					className="w-full bg-red-700 text-white"
+					onClick={() => router.push("/")}>
+					Login
+				</Button>
 				<p className="text-center text-sm font-bold">
 					Don&apos;t have an account?{" "}
 					<Link href="/register" className="text-yellow-400 underline">
