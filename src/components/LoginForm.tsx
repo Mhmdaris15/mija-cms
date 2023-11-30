@@ -1,5 +1,7 @@
 "use client";
 
+import { login } from "@/api/api";
+import { LoginType } from "@/api/types";
 import { Button, Input } from "@nextui-org/react";
 import { useFormik } from "formik";
 import Link from "next/link";
@@ -17,12 +19,22 @@ const LoginForm = (props: Props) => {
 	const toggleVisibility = () => setIsVisible(!isVisible);
 	const formik = useFormik({
 		initialValues: { email: "", password: "" },
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: (values: LoginType) => {
+			login(values)
+				.then((res) => {
+					// localStorage.setItem("accessToken", res?.data?.accessToken);
+					// localStorage.setItem("refreshToken", res?.data?.refreshToken);
+					console.log(res);
+					// router.push("/dashboard");
+				})
+				.catch((err) => console.log(err));
 		},
 	});
 	return (
-		<form action="" method="post" className="w-[80%] flex flex-col gap-y-7">
+		<form
+			onSubmit={formik.handleSubmit}
+			method="post"
+			className="w-[80%] flex flex-col gap-y-7">
 			<div className="mx-auto text-center flex flex-col gap-y-4">
 				<h2 className="text-4xl font-extrabold">Login</h2>
 				<p className="text-lg font-bold">
@@ -40,6 +52,8 @@ const LoginForm = (props: Props) => {
 					variant="bordered"
 					placeholder="Enter your email"
 					className="w-full mx-auto"
+					onChange={formik.handleChange}
+					value={formik.values.email}
 				/>
 			</div>
 			<div className="flex flex-col gap-y-2">
@@ -65,12 +79,15 @@ const LoginForm = (props: Props) => {
 					}
 					type={isVisible ? "text" : "password"}
 					className="w-full mx-auto"
+					onChange={formik.handleChange}
+					value={formik.values.password}
 				/>
 			</div>
 			<div className="flex flex-col gap-y-2">
 				<Button
 					className="w-full bg-red-700 text-white"
-					onClick={() => router.push("/")}>
+					// onClick={() => router.push("/")}
+					type="submit">
 					Login
 				</Button>
 				<p className="text-center text-sm font-bold">
