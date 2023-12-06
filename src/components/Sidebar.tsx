@@ -30,6 +30,8 @@ const Sidebar = (props: Props) => {
 		menuList: false,
 		table: false,
 		discount: false,
+		detail: false,
+		payment: false,
 	});
 
 	const onClickButton = (name: string) => {
@@ -44,6 +46,8 @@ const Sidebar = (props: Props) => {
 			menuList: false,
 			table: false,
 			discount: false,
+			detail: false,
+			payment: false,
 			[name]: true,
 		});
 		// If the name is sub of manage, set manage to true
@@ -54,6 +58,8 @@ const Sidebar = (props: Props) => {
 			name === "discount"
 		) {
 			setActive((prev) => ({ ...prev, manage: true }));
+		} else if (name === "detail" || name === "payment") {
+			setActive((prev) => ({ ...prev, reservation: true }));
 		}
 
 		switch (name) {
@@ -61,7 +67,8 @@ const Sidebar = (props: Props) => {
 				// router.push("/dashboard");
 				break;
 			case "manage":
-				// router.push("/manage");
+				setActive((prev) => ({ ...prev, manage: true, resto: true }));
+				router.push("/manage/resto");
 				break;
 			case "resto":
 				router.push("/manage/resto");
@@ -77,6 +84,12 @@ const Sidebar = (props: Props) => {
 				break;
 			case "reservation":
 				router.push("/reservation");
+				break;
+			case "detail":
+				router.push("/reservation/detail");
+				break;
+			case "payment":
+				router.push("/reservation/payment");
 				break;
 			case "chat":
 				router.push("/chat");
@@ -178,6 +191,26 @@ const Sidebar = (props: Props) => {
 					</span>{" "}
 					<span className="my-auto font-bold">Reservation</span>
 				</Button>
+
+				{/* Manage Sub Button */}
+				<Button
+					onClick={() => onClickButton("detail")}
+					size="lg"
+					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
+						"text-red-700": active.detail,
+					})}>
+					<span className="my-auto font-bold">Detail</span>
+				</Button>
+				<Button
+					onClick={() => onClickButton("payment")}
+					size="lg"
+					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
+						"text-red-700": active.payment,
+					})}>
+					<span className="my-auto font-bold">Payment</span>
+				</Button>
+				{/* Manage Sub Button */}
+
 				<Button
 					onClick={() => onClickButton("chat")}
 					size="lg"

@@ -21,100 +21,214 @@ import MenuDialog from "@/components/MenuDialog";
 
 type Props = {};
 
-const menuArray = [
+interface MenuInterface {
+	nama_menu: string;
+	kategori: string;
+	harga: string;
+	deskripsi: string | null;
+	stok: string;
+	diskon: string;
+}
+
+const menuArray: MenuInterface[] = [
 	{
 		nama_menu: "Nasi Goreng",
 		kategori: "Main Dish",
-		harga: "12000",
+		harga: "12,000",
 		deskripsi:
 			"Nasi goreng adalah makanan khas Indonesia yang terbuat dari nasi yang digoreng dengan bumbu-bumbu. Nasi goreng dapat ditambahkan dengan berbagai macam bahan, seperti daging ayam, telur, sayuran, dan lain-lain.",
 		stok: "150",
 		diskon: "5%",
 	},
 	{
-		nama_menu: "Soto Ayam",
-		kategori: "Soup",
-		harga: "10000",
+		nama_menu: "Sweet and Sour Chicken",
+		kategori: "Chinese Cuisine",
+		harga: "45,000",
 		deskripsi:
-			"Soto ayam adalah makanan berkuah yang terbuat dari kaldu ayam. Soto ayam biasanya disajikan dengan nasi, daging ayam, tauge, telur, dan lain-lain.",
-		stok: "200",
+			"Sweet and sour chicken is a classic Chinese dish with crispy fried chicken, bell peppers, and pineapple in a tangy sweet and sour sauce.",
+		stok: "100",
 		diskon: "10%",
 	},
 	{
-		nama_menu: "Mie Ayam",
-		kategori: "Noodle",
-		harga: "13000",
+		nama_menu: "Sushi Assortment",
+		kategori: "Japanese Cuisine",
+		harga: "60,000",
 		deskripsi:
-			"Mie ayam adalah makanan yang terbuat dari mie kuning yang disajikan dengan ayam suwir, sawi, daun bawang, dan pangsit. Mie ayam biasanya disajikan dengan kuah kaldu ayam.",
-		stok: "175",
-		diskon: "15%",
+			"Enjoy a variety of sushi with this assortment that includes nigiri, sashimi, and maki rolls. Perfect for sushi lovers!",
+		stok: "80",
+		diskon: "8%",
 	},
 	{
-		nama_menu: "Capcay",
-		kategori: "Vegetable",
-		harga: "11000",
+		nama_menu: "Rendang",
+		kategori: "Indonesian Dish",
+		harga: "35,000",
 		deskripsi:
-			"Capcay adalah makanan yang terbuat dari berbagai macam sayuran yang ditumis dengan bumbu-bumbu. Capcay biasanya disajikan dengan nasi atau mie.",
-		stok: "225",
-		diskon: "0%",
+			"Rendang is a flavorful Indonesian dish made with slow-cooked beef, coconut milk, and a blend of aromatic spices.",
+		stok: "120",
+		diskon: "7%",
 	},
 	{
-		nama_menu: "Es Teh Manis",
-		kategori: "Drink",
-		harga: "5000",
+		nama_menu: "Bibimbap",
+		kategori: "Korean Cuisine",
+		harga: "50,000",
 		deskripsi:
-			"Es teh manis adalah minuman yang terbuat dari teh yang disajikan dengan gula dan es. Es teh manis adalah minuman yang paling populer di Indonesia.",
-		stok: "300",
-		diskon: "20%",
+			"Bibimbap is a popular Korean mixed rice dish topped with vegetables, egg, and a spicy gochujang sauce. A delicious and colorful meal!",
+		stok: "90",
+		diskon: "12%",
 	},
 	{
-		nama_menu: "Es Jeruk",
-		kategori: "Drink",
-		harga: "6000",
+		nama_menu: "Pad Thai",
+		kategori: "Thai Cuisine",
+		harga: "55,000",
 		deskripsi:
-			"Es jeruk adalah minuman yang terbuat dari jeruk yang disajikan dengan gula dan es. Es jeruk adalah minuman yang menyegarkan dan menyehatkan.",
-		stok: "250",
+			"Pad Thai is a famous Thai stir-fried noodle dish, made with rice noodles, shrimp, tofu, peanuts, and lime.",
+		stok: "80",
 		diskon: "10%",
 	},
 	{
-		nama_menu: "Jus Alpukat",
-		kategori: "Drink",
-		harga: "7000",
+		nama_menu: "Dim Sum Platter",
+		kategori: "Chinese Cuisine",
+		harga: "65,000",
 		deskripsi:
-			"Jus alpukat adalah minuman yang terbuat dari alpukat yang disajikan dengan gula dan es. Jus alpukat adalah minuman yang kaya akan nutrisi dan bermanfaat bagi kesehatan.",
-		stok: "275",
-		diskon: "0%",
+			"Indulge in a delightful assortment of dim sum, including dumplings, buns, and spring rolls.",
+		stok: "95",
+		diskon: "8%",
 	},
 	{
-		nama_menu: "Kopi Hitam",
-		kategori: "Drink",
-		harga: "8000",
+		nama_menu: "Sashimi Deluxe",
+		kategori: "Japanese Cuisine",
+		harga: "75,000",
 		deskripsi:
-			"Kopi hitam adalah minuman yang terbuat dari biji kopi yang disangrai dan digiling. Kopi hitam adalah minuman yang dapat meningkatkan energi dan konsentrasi.",
-		stok: "325",
+			"Experience the freshness of the ocean with a deluxe sashimi platter featuring a variety of raw fish slices.",
+		stok: "70",
 		diskon: "15%",
+	},
+	{
+		nama_menu: "Nasi Lemak",
+		kategori: "Malaysian Dish",
+		harga: "30,000",
+		deskripsi:
+			"Nasi Lemak is a Malaysian fragrant rice dish cooked in coconut milk, served with anchovies, peanuts, boiled eggs, and sambal.",
+		stok: "110",
+		diskon: "5%",
+	},
+	{
+		nama_menu: "Bulgogi",
+		kategori: "Korean Cuisine",
+		harga: "40,000",
+		deskripsi:
+			"Bulgogi is a Korean barbecue dish featuring marinated and grilled beef, often served with vegetables.",
+		stok: "85",
+		diskon: "12%",
+	},
+	{
+		nama_menu: "Chicken Adobo",
+		kategori: "Filipino Dish",
+		harga: "35,000",
+		deskripsi:
+			"Chicken Adobo is a popular Filipino dish made with chicken marinated in soy sauce, vinegar, and garlic, then braised until tender.",
+		stok: "100",
+		diskon: "7%",
+	},
+	{
+		nama_menu: "Pho Bo",
+		kategori: "Vietnamese Cuisine",
+		harga: "45,000",
+		deskripsi:
+			"Pho Bo is a Vietnamese noodle soup with beef, rice noodles, and a fragrant broth made with herbs and spices.",
+		stok: "75",
+		diskon: "9%",
+	},
+	{
+		nama_menu: "Mee Goreng",
+		kategori: "Malaysian Dish",
+		harga: "38,000",
+		deskripsi:
+			"Mee Goreng is a Malaysian stir-fried noodle dish with a flavorful mix of spices, vegetables, and protein.",
+		stok: "90",
+		diskon: "6%",
+	},
+	{
+		nama_menu: "Tempura Udon",
+		kategori: "Japanese Cuisine",
+		harga: "58,000",
+		deskripsi:
+			"Tempura Udon features thick wheat noodles in a savory broth, topped with tempura (battered and deep-fried seafood or vegetables).",
+		stok: "65",
+		diskon: "11%",
+	},
+	{
+		nama_menu: "Tom Yum Soup",
+		kategori: "Thai Cuisine",
+		harga: "48,000",
+		deskripsi:
+			"Tom Yum Soup is a spicy and sour Thai soup with a fragrant blend of herbs, shrimp, mushrooms, and lime.",
+		stok: "80",
+		diskon: "8%",
 	},
 ];
 
 const MenuListPage = (props: Props) => {
+	const [filterValue, setFilterValue] = React.useState("");
+	const [statusFilter, setStatusFilter] = React.useState("all");
 	const [page, setPage] = React.useState(1);
-	const rowsPerPage = 4;
+	const [rowsPerPage, setRowsPerPage] = React.useState(4);
+
+	const hasSearchFilter = Boolean(filterValue.length);
 
 	const pages = Math.ceil(menuArray.length / rowsPerPage);
+
+	const filteredMenus = React.useMemo(() => {
+		let filteredMenus = [...menuArray];
+
+		if (hasSearchFilter) {
+			filteredMenus = filteredMenus.filter(
+				(menu) =>
+					menu.nama_menu.toLowerCase().includes(filterValue.toLowerCase()) ||
+					menu.kategori.toLowerCase().includes(filterValue.toLowerCase()) ||
+					menu.deskripsi?.toLowerCase().includes(filterValue.toLowerCase()) ||
+					menu.stok.toLowerCase().includes(filterValue.toLowerCase()) ||
+					menu.harga.toLowerCase().includes(filterValue.toLowerCase())
+			);
+		}
+
+		return filteredMenus;
+	}, [filterValue, hasSearchFilter]);
 
 	const items = React.useMemo(() => {
 		const start = (page - 1) * rowsPerPage;
 		const end = start + rowsPerPage;
 
-		return menuArray.slice(start, end);
-	}, [page, menuArray]);
+		return filteredMenus.slice(start, end);
+	}, [page, filteredMenus, rowsPerPage]);
+
+	const onSearchChange = React.useCallback((value: string) => {
+		if (value) {
+			setFilterValue(value);
+			setPage(1);
+		} else {
+			setFilterValue("");
+		}
+	}, []);
+
+	const onClear = React.useCallback(() => {
+		setFilterValue("");
+		setPage(1);
+	}, []);
 
 	return (
 		<div className="flex flex-col justify-stretch mt-5 px-10 bg-gray-600 w-full h-full">
 			<section className="flex justify-between items-center gap-x-4 mt-5 p-5 rounded-xl bg-gray-50">
 				<h3 className="flex-initial w-32 text-2xl font-bold">Menu List</h3>
 				<div className="flex justify-stretch items-center gap-x-4 flex-1 px-24">
-					<Input type="email" className="" variant="bordered" />
+					<Input
+						type="email"
+						className=""
+						variant="bordered"
+						value={filterValue}
+						onChange={(e) => onSearchChange(e.target.value)}
+						onClear={onClear}
+					/>
 					<Button className="w-16 h-12 text-white" color="warning">
 						<div className="">
 							<BsSearch />

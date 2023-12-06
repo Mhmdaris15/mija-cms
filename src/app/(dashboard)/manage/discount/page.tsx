@@ -211,7 +211,7 @@ const DiscountPage = (props: Props) => {
 				<h3 className="flex-initial w-40 text-2xl font-bold">Discount List</h3>
 				<div className="flex justify-stretch items-center gap-x-4 flex-1 px-24">
 					<Input
-						type="email"
+						type="text"
 						className=""
 						variant="bordered"
 						value={filterValue}

@@ -180,7 +180,7 @@ const paymentArray: Payment[] = [
 	},
 ];
 
-const ReservationPage = (props: Props) => {
+const PaymentPage = (props: Props) => {
 	const [filterValue, setFilterValue] = React.useState("");
 	const [statusFilter, setStatusFilter] = React.useState("all");
 	const [page, setPage] = React.useState(1);
@@ -299,4 +299,4 @@ const ReservationPage = (props: Props) => {
 	);
 };
 
-export default ReservationPage;
+export default PaymentPage;
