@@ -136,7 +136,9 @@ const ReservationPage = (props: Props) => {
 					{items.map((menu, index) => {
 						return (
 							<TableRow key={index} className="h-[7vh]">
-								<TableCell>{index + 1}</TableCell>
+								<TableCell>
+									{rowsPerPage * page - (rowsPerPage - index) + 1}
+								</TableCell>
 								<TableCell>{menu.reservationPayment}</TableCell>
 								<TableCell>{menu.total}</TableCell>
 								<TableCell>{menu.deposit}</TableCell>

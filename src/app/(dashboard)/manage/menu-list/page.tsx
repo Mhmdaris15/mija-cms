@@ -158,7 +158,9 @@ const MenuListPage = (props: Props) => {
 					{items.map((menu, index) => {
 						return (
 							<TableRow key={index} className="h-[11vh]">
-								<TableCell>{index + 1}</TableCell>
+								<TableCell>
+									{rowsPerPage * page - (rowsPerPage - index) + 1}
+								</TableCell>
 								<TableCell>{menu.nama_menu}</TableCell>
 								<TableCell>{menu.kategori}</TableCell>
 								<TableCell>{menu.harga}</TableCell>

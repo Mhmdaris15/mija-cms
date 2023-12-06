@@ -29,6 +29,7 @@ const Sidebar = (props: Props) => {
 		resto: false,
 		menuList: false,
 		table: false,
+		discount: false,
 	});
 
 	const onClickButton = (name: string) => {
@@ -42,10 +43,16 @@ const Sidebar = (props: Props) => {
 			resto: false,
 			menuList: false,
 			table: false,
+			discount: false,
 			[name]: true,
 		});
 		// If the name is sub of manage, set manage to true
-		if (name === "resto" || name === "menuList" || name === "table") {
+		if (
+			name === "resto" ||
+			name === "menuList" ||
+			name === "table" ||
+			name === "discount"
+		) {
 			setActive((prev) => ({ ...prev, manage: true }));
 		}
 
@@ -64,6 +71,9 @@ const Sidebar = (props: Props) => {
 				break;
 			case "table":
 				router.push("/manage/table");
+				break;
+			case "discount":
+				router.push("/manage/discount");
 				break;
 			case "reservation":
 				router.push("/reservation");
@@ -142,6 +152,14 @@ const Sidebar = (props: Props) => {
 						"text-red-700": active.table,
 					})}>
 					<span className="my-auto font-bold">Table</span>
+				</Button>
+				<Button
+					onClick={() => onClickButton("discount")}
+					size="lg"
+					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
+						"text-red-700": active.discount,
+					})}>
+					<span className="my-auto font-bold">Discount List</span>
 				</Button>
 
 				{/* Manage Sub Button */}

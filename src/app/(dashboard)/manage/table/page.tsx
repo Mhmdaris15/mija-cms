@@ -18,6 +18,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { RiFileEditLine } from "react-icons/ri";
 import { IoMdAdd } from "react-icons/io";
 import { IoAdd } from "react-icons/io5";
+import TableDialog from "@/components/TableDialog";
 
 type Props = {};
 
@@ -108,9 +109,10 @@ const TablePage = (props: Props) => {
 						</div>
 					</Button>
 				</div>
-				<Button className="flex-initial w-32 h-12 bg-red-600 text-white">
+				{/* <Button className="flex-initial w-32 h-12 bg-red-600 text-white">
 					<IoAdd /> Tambahkan
-				</Button>
+				</Button> */}
+				<TableDialog />
 			</section>
 			<Table
 				color={"primary"}
@@ -146,7 +148,9 @@ const TablePage = (props: Props) => {
 					{items.map((menu, index) => {
 						return (
 							<TableRow key={index} className="h-[7vh]">
-								<TableCell>{index + 1}</TableCell>
+								<TableCell>
+									{rowsPerPage * page - (rowsPerPage - index) + 1}
+								</TableCell>
 								<TableCell>{menu.table_number}</TableCell>
 								<TableCell>{menu.category}</TableCell>
 								<TableCell>{menu.deskripsi}</TableCell>
