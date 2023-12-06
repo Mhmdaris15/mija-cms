@@ -112,6 +112,7 @@ const Sidebar = (props: Props) => {
 			/>
 			<section className="flex flex-col gap-2 mt-10 text-black">
 				<Button
+					onKeyUp={(e) => console.log(e.key)}
 					onClick={() => onClickButton("dashboard")}
 					size="lg"
 					className={clsx(
@@ -142,38 +143,54 @@ const Sidebar = (props: Props) => {
 				</Button>
 
 				{/* Manage Sub Button */}
-				<Button
-					onClick={() => onClickButton("resto")}
-					size="lg"
-					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
-						"text-red-700": active.resto,
-					})}>
-					<span className="my-auto font-bold">Resto</span>
-				</Button>
-				<Button
-					onClick={() => onClickButton("menuList")}
-					size="lg"
-					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
-						"text-red-700": active.menuList,
-					})}>
-					<span className="my-auto font-bold">Menu List</span>
-				</Button>
-				<Button
-					onClick={() => onClickButton("table")}
-					size="lg"
-					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
-						"text-red-700": active.table,
-					})}>
-					<span className="my-auto font-bold">Table</span>
-				</Button>
-				<Button
-					onClick={() => onClickButton("discount")}
-					size="lg"
-					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
-						"text-red-700": active.discount,
-					})}>
-					<span className="my-auto font-bold">Discount List</span>
-				</Button>
+				{!active.reservation && active.manage && (
+					<>
+						<Button
+							onClick={() => onClickButton("resto")}
+							size="lg"
+							className={clsx(
+								"flex h-16 justify-end bg-gray-50 rounded-lg px-4",
+								{
+									"text-red-700": active.resto,
+								}
+							)}>
+							<span className="my-auto font-bold">Resto</span>
+						</Button>
+						<Button
+							onClick={() => onClickButton("menuList")}
+							size="lg"
+							className={clsx(
+								"flex h-16 justify-end bg-gray-50 rounded-lg px-4",
+								{
+									"text-red-700": active.menuList,
+								}
+							)}>
+							<span className="my-auto font-bold">Menu List</span>
+						</Button>
+						<Button
+							onClick={() => onClickButton("table")}
+							size="lg"
+							className={clsx(
+								"flex h-16 justify-end bg-gray-50 rounded-lg px-4",
+								{
+									"text-red-700": active.table,
+								}
+							)}>
+							<span className="my-auto font-bold">Table</span>
+						</Button>
+						<Button
+							onClick={() => onClickButton("discount")}
+							size="lg"
+							className={clsx(
+								"flex h-16 justify-end bg-gray-50 rounded-lg px-4",
+								{
+									"text-red-700": active.discount,
+								}
+							)}>
+							<span className="my-auto font-bold">Discount List</span>
+						</Button>
+					</>
+				)}
 
 				{/* Manage Sub Button */}
 
@@ -193,22 +210,32 @@ const Sidebar = (props: Props) => {
 				</Button>
 
 				{/* Manage Sub Button */}
-				<Button
-					onClick={() => onClickButton("detail")}
-					size="lg"
-					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
-						"text-red-700": active.detail,
-					})}>
-					<span className="my-auto font-bold">Detail</span>
-				</Button>
-				<Button
-					onClick={() => onClickButton("payment")}
-					size="lg"
-					className={clsx("flex h-16 justify-end bg-gray-50 rounded-lg px-4", {
-						"text-red-700": active.payment,
-					})}>
-					<span className="my-auto font-bold">Payment</span>
-				</Button>
+				{!active.manage && active.reservation && (
+					<>
+						<Button
+							onClick={() => onClickButton("detail")}
+							size="lg"
+							className={clsx(
+								"flex h-16 justify-end bg-gray-50 rounded-lg px-4",
+								{
+									"text-red-700": active.detail,
+								}
+							)}>
+							<span className="my-auto font-bold">Detail</span>
+						</Button>
+						<Button
+							onClick={() => onClickButton("payment")}
+							size="lg"
+							className={clsx(
+								"flex h-16 justify-end bg-gray-50 rounded-lg px-4",
+								{
+									"text-red-700": active.payment,
+								}
+							)}>
+							<span className="my-auto font-bold">Payment</span>
+						</Button>
+					</>
+				)}
 				{/* Manage Sub Button */}
 
 				<Button
