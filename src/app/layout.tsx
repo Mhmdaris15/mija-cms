@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./provider";
 import { Progress } from "@nextui-org/react";
 import React from "react";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
+				<NextTopLoader />
 				<Providers>{children}</Providers>
 			</body>
 		</html>

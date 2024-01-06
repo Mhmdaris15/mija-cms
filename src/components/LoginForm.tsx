@@ -8,6 +8,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import AppleLogo from "@public/Apple-Logo.png"
+import GoogleLogo from "@public/Google__G__logo.svg.png"
+import Image from "next/image";
 
 type Props = {};
 
@@ -34,7 +37,8 @@ const LoginForm = (props: Props) => {
 		<form
 			onSubmit={formik.handleSubmit}
 			method="post"
-			className="w-[80%] flex flex-col gap-y-7">
+			className="max-w-sm md:max-w-lg flex flex-col gap-y-7"
+		>
 			<div className="mx-auto text-center flex flex-col gap-y-4">
 				<h2 className="text-4xl font-extrabold">Login</h2>
 				<p className="text-lg font-bold">
@@ -54,6 +58,8 @@ const LoginForm = (props: Props) => {
 					className="w-full mx-auto"
 					onChange={formik.handleChange}
 					value={formik.values.email}
+					isClearable
+					onClear={() => formik.setFieldValue("email", "")}
 				/>
 			</div>
 			<div className="flex flex-col gap-y-2">
@@ -69,7 +75,8 @@ const LoginForm = (props: Props) => {
 						<button
 							className="focus:outline-none"
 							type="button"
-							onClick={toggleVisibility}>
+							onClick={toggleVisibility}
+						>
 							{isVisible ? (
 								<AiOutlineEyeInvisible className="text-2xl text-default-400 pointer-events-none" />
 							) : (
@@ -83,11 +90,27 @@ const LoginForm = (props: Props) => {
 					value={formik.values.password}
 				/>
 			</div>
+			<div className="flex flex-col items-center gap-5">
+				<p className="text-xs text-center font-bold">
+					Or Login with
+				</p>
+				<span className="flex gap-2">
+					<Button isIconOnly radius="full" variant="shadow" className="bg-transparent"
+						onClick={() => router.push("/")}
+					>
+						<Image src={GoogleLogo} className="p-1" alt="Google Logo" width={50} />
+					</Button>
+					<Button isIconOnly radius="full" variant="shadow" className="bg-transparent">
+						<Image src={AppleLogo} alt="Apple Logo" width={50} />
+					</Button>
+				</span>
+			</div>
 			<div className="flex flex-col gap-y-2">
 				<Button
 					className="w-full bg-red-700 text-white"
 					// onClick={() => router.push("/")}
-					type="submit">
+					type="submit"
+				>
 					Login
 				</Button>
 				<p className="text-center text-sm font-bold">

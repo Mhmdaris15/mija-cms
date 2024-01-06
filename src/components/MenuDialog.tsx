@@ -52,11 +52,13 @@ const UploadPhoto = (props: UploadPhotoProps) => {
 			{file ? (
 				<label
 					htmlFor={props.name}
-					className={`${props.className} cursor-pointer relative`}>
+					className={`${props.className} cursor-pointer relative`}
+				>
 					<button
 						className="absolute top-0 right-0 m-2 text-red-500 z-10"
 						onClick={handleRemoveFile}
-						aria-label="Remove image">
+						aria-label="Remove image"
+					>
 						<IoRemoveCircle size={24} />
 					</button>
 					<Image
@@ -70,7 +72,8 @@ const UploadPhoto = (props: UploadPhotoProps) => {
 				<>
 					<label
 						htmlFor={props.name}
-						className={`${props.className} cursor-pointer`}>
+						className={`${props.className} cursor-pointer`}
+					>
 						<span className="flex flex-col items-center justify-evenly h-32 border border-gray-400 rounded-2xl">
 							<IoAdd className="text-2xl text-default-400 pointer-events-none" />
 							<p className="text-gray-500">{props.description}</p>
@@ -94,7 +97,8 @@ const MenuDialog = (props: Props) => {
 		<>
 			<Button
 				className="flex-initial w-32 h-12 bg-red-600 text-white"
-				onPress={onOpen}>
+				onPress={onOpen}
+			>
 				<IoAdd />
 				Tambahkan
 			</Button>
@@ -125,7 +129,8 @@ const MenuDialog = (props: Props) => {
 							},
 						},
 					},
-				}}>
+				}}
+			>
 				<ModalContent>
 					{(onClose) => (
 						<>
@@ -229,14 +234,16 @@ const MenuDialog = (props: Props) => {
 								<Button
 									size="lg"
 									className="bg-red-500 text-gray-50 w-full"
-									onPress={onClose}>
+									onPress={onClose}
+								>
 									Close
 								</Button>
 								<Button
 									size="lg"
 									color="primary"
 									className="w-full"
-									onPress={onClose}>
+									onPress={onClose}
+								>
 									Save
 								</Button>
 							</ModalFooter>
