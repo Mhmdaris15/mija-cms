@@ -11,6 +11,15 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import AppleLogo from "@public/Apple-Logo.png"
 import GoogleLogo from "@public/Google__G__logo.svg.png"
 import Image from "next/image";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+	email: Yup.string().email("Invalid email address").required("Required"),
+	password: Yup.string()
+		.min(8, "Password must be at least 8 characters")
+		.required("Required"),
+});
+
 
 type Props = {};
 

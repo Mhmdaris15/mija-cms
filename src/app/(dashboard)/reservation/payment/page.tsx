@@ -229,7 +229,7 @@ const PaymentPage = (props: Props) => {
 	}, []);
 
 	return (
-		<div className="flex flex-col justify-stretch mt-5 px-10 bg-gray-600 w-full h-full">
+		<div className="flex flex-col justify-stretch px-10 bg-gray-600 w-full h-full">
 			<section className="flex justify-between items-center gap-x-4 mt-5 p-5 rounded-xl bg-gray-50">
 				<h3 className="flex-initial w-32 text-2xl font-bold">Payments</h3>
 				<div className="flex justify-stretch items-center gap-x-4 flex-1 px-24">

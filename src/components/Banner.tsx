@@ -1,7 +1,9 @@
 "use client";
 
+import { useSidebarStore } from "@/hooks/useSidebarStore";
 import {
 	Avatar,
+	Button,
 	Dropdown,
 	DropdownItem,
 	DropdownMenu,
@@ -9,16 +11,27 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiSidebar } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
 
 type Props = {};
 
 const Banner = (props: Props) => {
 	const router = useRouter();
+	const toggleSidebar = useSidebarStore((state) => state.toggle)
+	const isOpen = useSidebarStore((state) => state.isOpen)
+
 	return (
-		<div className="w-full h-32 py-8 px-8 bg-red-50 text-black font-extrabold text-4xl flex items-center justify-between">
-			<span>Panel Admin</span>
+		<div
+			className="w-full sticky z-10 top-0 h-32 py-8 px-8 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 text-black shadow-lg font-extrabold text-4xl flex items-center justify-between">
+			<span className="flex gap-x-5">
+				<Button isIconOnly color="primary" variant="ghost" aria-label="Like"
+					onClick={toggleSidebar}
+				>
+					<FiSidebar />
+				</Button>
+				<span className="hidden lg:block">Panel Admin</span>
+			</span>
 			<div className="flex items-center">
 				<div className="pr-10 cursor-pointer">
 					<IoNotificationsOutline />
@@ -37,7 +50,7 @@ const Banner = (props: Props) => {
 							/>
 							<div>
 								<h3 className="text-lg">Sena Hargi</h3>
-								<h4 className="text-yellow-400 text-sm">Admin</h4>
+								<h4 className="text-red-700 font-bold text-sm">Admin</h4>
 							</div>
 							<FiChevronDown />
 						</div>

@@ -24,7 +24,7 @@ const RestoPage = (props: Props) => {
 	const pages = Math.ceil(images.length / 1);
 
 	return (
-		<div className="flex flex-col justify-stretch mt-5 px-10 bg-gray-600 w-full h-[100%]">
+		<div className="flex flex-col justify-stretch px-10 bg-gray-600 w-full h-[100%]">
 			<section className="flex justify-between items-center gap-x-4 mt-5 p-5 rounded-xl bg-gray-50">
 				<h3 className="flex-initial w-32 text-2xl font-bold">Resto</h3>
 			</section>
@@ -51,6 +51,7 @@ const RestoPage = (props: Props) => {
 								variant="bordered"
 								placeholder="Enter your Address"
 								className="w-full mx-auto"
+								isClearable
 							/>
 						</div>
 						<div className="flex flex-col gap-y-2">
@@ -64,6 +65,7 @@ const RestoPage = (props: Props) => {
 								variant="bordered"
 								placeholder="Enter your Resto email"
 								className="w-full mx-auto"
+								isClearable
 							/>
 						</div>
 						<div className="flex flex-row gap-x-3">
@@ -78,6 +80,7 @@ const RestoPage = (props: Props) => {
 									variant="bordered"
 									placeholder="Enter Resto Open Hour"
 									className="w-full mx-auto"
+									isClearable
 								/>
 							</div>
 							<div className="flex-1 flex flex-col gap-y-2">
@@ -91,6 +94,7 @@ const RestoPage = (props: Props) => {
 									variant="bordered"
 									placeholder="Enter Resto Close Hour"
 									className="w-full mx-auto"
+									isClearable
 								/>
 							</div>
 						</div>
@@ -105,6 +109,7 @@ const RestoPage = (props: Props) => {
 								variant="bordered"
 								placeholder="Enter Booking Fee"
 								className="w-full mx-auto"
+								isClearable
 							/>
 						</div>
 					</div>
